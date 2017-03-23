@@ -498,7 +498,7 @@ namespace VTDev.Libraries.CEXEngine.Crypto.Digest
                 // last compression
                 ProcessBlock(m_msgBuffer, m_msgLength - BLOCK_SIZE, m_State[0], BLOCK_SIZE);
                 // output the code
-                Le256ToBlock(m_State[0].H, Output, 0);
+                Le256ToBlock(m_State[0].H, Output, OutOffset);
             }
             else
             {
@@ -508,7 +508,7 @@ namespace VTDev.Libraries.CEXEngine.Crypto.Digest
 
                 m_State[0].F[0] = ULL_MAX;
                 ProcessBlock(m_msgBuffer, 0, m_State[0], (uint)m_msgLength);
-                Le256ToBlock(m_State[0].H, Output, 0);
+                Le256ToBlock(m_State[0].H, Output, OutOffset);
             }
 
             Reset();
